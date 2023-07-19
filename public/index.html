@@ -1,127 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!-- Latest compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css" />
-    <title>My Portfolio</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#about-me">Tyler Weiss</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <!-- Add 'ml-auto' class to align items to the right -->
-            <li class="nav-item">
-              <a class="nav-link" href="#about-me">About Me</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact-me">Contact Me</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- About Me Section -->
-    <section id="about-me">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>
-          Welcome to my portfolio website! I am passionate about coding and
-          always eager to learn new technologies. I have experience in web
-          development, including HTML, CSS, and JavaScript. In my free time, I
-          enjoy working on personal projects and contributing to open-source
-          projects.
-        </p>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-      <div class="container">
-        <h2>Skills</h2>
-        <ul>
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>JavaScript</li>
-          <li>Bootstrap</li>
-          <li>React</li>
-          <li>Node.js</li>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/js/scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+  <title>My Portfolio</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="javascript:void(0);" onclick="scrollToSection('#about-me')">Tyler Weiss</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#about-me')">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#skills')">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#projects')">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#contact-me')">Contact Me</a>
+          </li>
         </ul>
       </div>
-    </section>
+    </div>
+  </nav>
 
-    <!-- Projects Section -->
-    <section id="projects">
-      <div class="container">
-        <h2>Projects</h2>
-        <div class="card">
-          <img src="project-image-1.jpg" class="card-img-top" alt="Project 1" />
-          <div class="card-body">
-            <h5 class="card-title">Project 1</h5>
-            <p class="card-text">
-              This is a description of Project 1. It's an exciting project I
-              worked on during my free time.
-            </p>
-            <a href="#" class="btn btn-primary">View Project</a>
-          </div>
+  <!-- About Me Section -->
+  <section id="about-me">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        Welcome to my portfolio website! I am passionate about coding and always eager to learn
+        new technologies. I have experience in web development, including HTML, CSS, and JavaScript.
+        In my free time, I enjoy working on personal projects and contributing to open-source
+        projects.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>Bootstrap</li>
+        <li>React</li>
+        <li>Node.js</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Project 1</h5>
+          <p class="card-text">
+            This is a description of Project 1. It's an exciting project I worked on during my free
+            time.
+          </p>
+          <a href="#" class="btn btn-primary">View Project</a>
         </div>
-        <!-- Add more project cards here -->
       </div>
-    </section>
+      <!-- Add more project cards here -->
+    </div>
+  </section>
 
-    <!-- Contact Me Section -->
-    <section id="contact-me">
-      <div class="container">
-        <h2>Contact Me</h2>
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Your Name"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="you@example.com"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              rows="4"
-              placeholder="Your Message"
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-    </section>
-  </body>
+  <!-- Contact Me Section -->
+  <section id="contact-me">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Your Name">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </section>
+</body>
 </html>
