@@ -10,8 +10,10 @@ function handleSubmit(event) {
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
 
-  if (!name || !email || !message) {
-    alert("Please fill in all the required fields.");
+  if (!name.trim() || !email.trim() || !message.trim()) {
+    showError("name", !name.trim() ? "Please enter your name." : "");
+    showError("email", !email.trim() ? "Please enter your email address." : "");
+    showError("message", !message.trim() ? "Please enter a message." : "");
     return;
   }
 
@@ -21,18 +23,19 @@ function handleSubmit(event) {
     return;
   }
 
+  hideError("name");
   hideError("email");
+  hideError("message");
 
-  // Code to send the email or perform other actions on valid form submission
-  // For this example, we'll display a success message for 5 seconds
   showSuccessMessage();
+  document.getElementById("myForm").reset();
 }
 
 function showError(fieldId, errorMessage) {
   const inputField = document.getElementById(fieldId);
   const errorField = inputField.nextElementSibling;
   errorField.textContent = errorMessage;
-  errorField.style.display = "block";
+  errorField.style.display = errorMessage ? "block" : "none";
 }
 
 function hideError(fieldId) {
@@ -46,6 +49,5 @@ function showSuccessMessage() {
   successMessage.style.display = "block";
   setTimeout(() => {
     successMessage.style.display = "none";
-    document.getElementById("myForm").reset();
-  }, 5000);
+  }, 3000);
 }
