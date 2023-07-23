@@ -62,7 +62,7 @@
     </nav>
 
     <!-- About Me Section -->
-    <section id="about-me">
+    <section id="about-me" class="mt-5 mb-5">
       <div class="container">
         <h2>About Me</h2>
         <p>
@@ -76,7 +76,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills">
+    <section id="skills" class="mt-5 mb-5">
       <div class="container">
         <h2>Skills</h2>
         <ul>
@@ -102,7 +102,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" class="mt-5 mb-5">
       <div class="container">
         <h2>Projects</h2>
         <div class="card">
@@ -121,46 +121,83 @@
     </section>
 
     <!-- Contact Me Section -->
-    <section id="contact-me">
+    <section id="contact-me" class="mt-5 mb-5">
       <div class="container">
         <h2>Contact Me</h2>
-        <div>
-          <p>
-            <a href="https://github.com/tweiss9" target="_blank" rel="noopener">GitHub</a>
-            <span> | </span>
-            <a href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/" target="_blank" rel="noopener">LinkedIn</a>
-          </p>
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              <a
+                href="https://github.com/tweiss9"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <span> | </span>
+              <a
+                href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </p>
+          </div>
+          <div class="col-md-6">
+            <form id="myForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                />
+                <div id="nameError" class="text-danger d-none">
+                  Please enter your name
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="you@example.com"
+                  required
+                />
+                <div id="emailError" class="invalid-feedback" ></div>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  rows="4"
+                  placeholder="Your Message"
+                  required
+                ></textarea>
+                <div id="messageError" class="text-danger d-none">
+                  Please enter your message
+                </div>
+              </div>
+              <div
+                id="successMessage"
+                class="alert alert-success d-none"
+                role="alert"
+              >
+                Message sent!
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                onclick="handleSubmit(event)"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Your Name"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="you@example.com"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              rows="4"
-              placeholder="Your Message"
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
       </div>
     </section>
   </body>
