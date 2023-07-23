@@ -28,7 +28,9 @@ function handleSubmit(event) {
   hideError("message");
 
   showSuccessMessage();
-  document.getElementById("myForm").reset();
+  setTimeout(() => {
+    document.getElementById("myForm").reset();
+  }, 1000);
 }
 
 function showError(fieldId, errorMessage) {
@@ -46,8 +48,8 @@ function hideError(fieldId) {
 
 function showSuccessMessage() {
   const successMessage = document.getElementById("successMessage");
-  successMessage.style.display = "block";
+  successMessage.classList.remove("d-none");
   setTimeout(() => {
-    successMessage.style.display = "none";
-  }, 3000);
+    successMessage.classList.add("d-none");
+  }, 2000);
 }
