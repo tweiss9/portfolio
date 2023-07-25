@@ -1,6 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
+const { sendEmail } = require('./public/js/sendEmail.js');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   const userAgent = req.headers['user-agent'];
@@ -19,6 +24,17 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.post('/send-email', (req, res) => {
+  const { name, email, message } = req.body;
+  sendEmail(name, email, message)
+    .then(() => {
+      res.json({ success: true });
+    })
+    .catch((error) => {
+      res.status(500).json({ success: false, error: 'Failed to send email' });
+    });
+});
 
 const port = 3000;
 app.listen(port, () => {

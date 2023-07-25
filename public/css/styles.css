@@ -1,6 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
 #successMessage {
   max-height: 40px;
   overflow: hidden;
@@ -8,5 +9,15 @@ body {
 }
 
 #successMessage.show {
+  display: flex;
+}
+
+#loadingMessage {
+  max-height: 40px;
+  overflow: hidden;
+  display: flex;
+}
+
+#loadingMessage.show {
   display: flex;
 }

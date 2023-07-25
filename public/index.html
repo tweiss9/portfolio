@@ -247,15 +247,22 @@
                     Submit
                   </button>
                 </div>
-                <div class="col-md-6">
-                  <div
-                    id="successMessage"
-                    class="alert alert-success d-none align-items-center justify-content-center"
-                    role="alert"
-                  >
-                    Message sent!
-                  </div>
-                </div>
+                <div
+                id="loadingMessage"
+                class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1 mr-3"
+                role="alert"
+              >
+                <div class="spinner-border text-primary mr-2" role="status"></div>
+                Sending email...
+              </div>
+              <div
+                id="successMessage"
+                class="alert alert-success d-none align-items-center justify-content-center flex-grow-1 mr-3"
+                role="alert"
+              >
+                Message sent!
+              </div>
+            </div>
               </div>
             </form>
           </div>

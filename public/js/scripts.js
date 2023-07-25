@@ -27,10 +27,29 @@ function handleSubmit(event) {
   hideError("email");
   hideError("message");
 
-  showSuccessMessage();
+  showLoadingSpinner();
+
+  fetch('/send-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, message }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      hideLoadingSpinner();
+      showSuccessMessage();
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+      hideLoadingSpinner();
+    });
+
   setTimeout(() => {
     document.getElementById("myForm").reset();
-  }, 1000);
+  }, 2000);
 }
 
 function showError(fieldId, errorMessage) {
@@ -46,10 +65,21 @@ function hideError(fieldId) {
   errorField.style.display = "none";
 }
 
+function showLoadingSpinner() {
+  const loadingMessage = document.getElementById('loadingMessage');
+  loadingMessage.classList.remove('d-none');
+}
+
+
+function hideLoadingSpinner() {
+  const loadingMessage = document.getElementById('loadingMessage');
+  loadingMessage.classList.add('d-none');
+}
+
 function showSuccessMessage() {
-  const successMessage = document.getElementById("successMessage");
-  successMessage.classList.remove("d-none");
+  const successMessage = document.getElementById('successMessage');
+  successMessage.classList.remove('d-none');
   setTimeout(() => {
-    successMessage.classList.add("d-none");
+    successMessage.classList.add('d-none');
   }, 2000);
 }
