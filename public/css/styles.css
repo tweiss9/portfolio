@@ -1,3 +1,12 @@
-body{
-    font-family: 'Roboto', sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
+}
+#successMessage {
+  max-height: 40px;
+  overflow: hidden;
+  display: flex;
+}
+
+#successMessage.show {
+  display: flex;
 }

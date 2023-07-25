@@ -65,9 +65,7 @@
     <section id="welcome" class="bg-dark text-white text-center py-5">
       <div class="container">
         <h1 class="display-4">Welcome to Tyler's Portfolio Website</h1>
-        <p class="lead">
-          Explore my skills, projects, and more!
-        </p>
+        <p class="lead">Explore my skills, projects, and more!</p>
       </div>
     </section>
 
@@ -158,18 +156,49 @@
     <section id="contact-me" class="mt-5 mb-5">
       <div class="container">
         <h2 class="text-center">Contact Me</h2>
-          <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
             <p>
-              <a href="https://github.com/tweiss9" target="_blank" rel="noopener">
-                <img src="/images/github_logo.png" alt="GitHub" class="img-fluid social-logo" width="75" height="75" />
+              <a
+                href="https://github.com/tweiss9"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="/images/github_logo.png"
+                  alt="GitHub"
+                  class="img-fluid social-logo"
+                  width="75"
+                  height="75"
+                />
               </a>
-              <a href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/" target="_blank" rel="noopener">
-                <img src="/images/linkedin_logo.png" alt="LinkedIn" class="img-fluid social-logo" width="75" height="75" />
+              <a
+                href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="/images/linkedin_logo.png"
+                  alt="LinkedIn"
+                  class="img-fluid social-logo"
+                  width="75"
+                  height="75"
+                />
               </a>
-              <a href="mailto:tylerhweiss@gmail.com?subject=Contact%20Me" target="_blank" rel="noopener">
-                <img src="/images/gmail_logo.png" alt="Gmail" class="img-fluid social-logo" width="75" height="75" />
+              <a
+                href="mailto:tylerhweiss@gmail.com?subject=Contact%20Me"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="/images/gmail_logo.png"
+                  alt="Gmail"
+                  class="img-fluid social-logo"
+                  width="75"
+                  height="75"
+                />
               </a>
-            </p>            
+            </p>
             <form id="myForm">
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -208,20 +237,26 @@
                   Please enter your message
                 </div>
               </div>
-              <div
-                id="successMessage"
-                class="alert alert-success d-none"
-                role="alert"
-              >
-                Message sent!
+              <div class="row">
+                <div class="col-md-6">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block align-items-stretch"
+                    onclick="handleSubmit(event)"
+                  >
+                    Submit
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    id="successMessage"
+                    class="alert alert-success d-none align-items-center justify-content-center"
+                    role="alert"
+                  >
+                    Message sent!
+                  </div>
+                </div>
               </div>
-              <button
-                type="submit"
-                class="btn btn-primary"
-                onclick="handleSubmit(event)"
-              >
-                Submit
-              </button>
             </form>
           </div>
         </div>
