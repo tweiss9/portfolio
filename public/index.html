@@ -15,14 +15,16 @@
     <title>Tyler Weiss Portfolio</title>
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a
           class="navbar-brand"
           href="javascript:void(0);"
           onclick="scrollToSection('#about-me')"
-          >Tyler Weiss</a
         >
+          Tyler Weiss
+        </a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -30,38 +32,43 @@
                 class="nav-link"
                 href="javascript:void(0);"
                 onclick="scrollToSection('#about-me')"
-                >About Me</a
               >
+                About Me
+              </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 href="javascript:void(0);"
                 onclick="scrollToSection('#skills')"
-                >Skills</a
               >
+                Skills
+              </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 href="javascript:void(0);"
                 onclick="scrollToSection('#projects')"
-                >Projects</a
               >
+                Projects
+              </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 href="javascript:void(0);"
                 onclick="scrollToSection('#contact-me')"
-                >Contact Me</a
               >
+                Contact Me
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
+    <!--Welcome-->
     <section id="welcome" class="bg-dark text-white text-center py-5">
       <div class="container">
         <h1 class="display-4">Welcome to Tyler's Portfolio Website</h1>
@@ -248,21 +255,23 @@
                   </button>
                 </div>
                 <div
-                id="loadingMessage"
-                class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1 mr-3"
-                role="alert"
-              >
-                <div class="spinner-border text-primary mr-2" role="status"></div>
-                Sending email...
-              </div>
-              <div
-                id="successMessage"
-                class="alert alert-success d-none align-items-center justify-content-center flex-grow-1 mr-3"
-                role="alert"
-              >
-                Message sent!
-              </div>
-            </div>
+                  id="loadingMessage"
+                  class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1 mr-3"
+                  role="alert"
+                >
+                  <div
+                    class="spinner-border text-primary mr-2"
+                    role="status"
+                  ></div>
+                  Sending email...
+                </div>
+                <div
+                  id="successMessage"
+                  class="alert alert-success d-none align-items-center justify-content-center flex-grow-1 mr-3"
+                  role="alert"
+                >
+                  Message sent!
+                </div>
               </div>
             </form>
           </div>
