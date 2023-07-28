@@ -2,6 +2,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+#welcome {
+  margin: 50px auto 50px auto;
+}
+
 #successMessage {
   max-height: 40px;
   overflow: hidden;
