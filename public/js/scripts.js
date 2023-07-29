@@ -6,14 +6,14 @@ function scrollToSection(sectionId) {
 function handleSubmit(event) {
   event.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  if (!name.trim() || !email.trim() || !message.trim()) {
-    showError("name", !name.trim() ? "Please enter your name." : "");
-    showError("email", !email.trim() ? "Please enter your email address." : "");
-    showError("message", !message.trim() ? "Please enter a message." : "");
+  if (!name || !email || !message) {
+    showError("name", !name ? "Please enter your name." : "");
+    showError("email", !email ? "Please enter your email address." : "");
+    showError("message", !message ? "Please enter a message." : "");
     return;
   }
 
@@ -36,13 +36,13 @@ function handleSubmit(event) {
     },
     body: JSON.stringify({ name, email, message }),
   })
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       console.log(data);
       hideLoadingSpinner();
       showSuccessMessage();
     })
-    .catch((error) => {
+    .catch(error => {
       console.error('Error sending email:', error);
       hideLoadingSpinner();
     });
