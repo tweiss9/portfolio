@@ -6,26 +6,22 @@ function scrollToSection(sectionId) {
 function handleSubmit(event) {
   event.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
 
-  if (!name || !email || !message) {
-    showError("name", !name ? "Please enter your name." : "");
-    showError("email", !email ? "Please enter your email address." : "");
-    showError("message", !message ? "Please enter a message." : "");
-    return;
-  }
+  let isValid = true;
+  isValid = toggleValidation(nameInput, !nameInput.value.trim(), 'nameError') && isValid;
+  isValid = toggleValidation(emailInput, !emailInput.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim()), 'emailError') && isValid;
+  isValid = toggleValidation(messageInput, !messageInput.value.trim(), 'messageError') && isValid;
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    showError("email", "Please enter a valid email address.");
-    return;
-  }
+  if (!isValid) return;
 
-  hideError("name");
-  hideError("email");
-  hideError("message");
+  const formData = {
+    name: nameInput.value.trim(),
+    email: emailInput.value.trim(),
+    message: messageInput.value.trim()
+  };
 
   showLoadingSpinner();
 
@@ -34,7 +30,7 @@ function handleSubmit(event) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ name, email, message }),
+    body: JSON.stringify(formData),
   })
     .then(response => response.json())
     .then(data => {
@@ -52,17 +48,17 @@ function handleSubmit(event) {
   }, 2000);
 }
 
-function showError(fieldId, errorMessage) {
-  const inputField = document.getElementById(fieldId);
-  const errorField = inputField.nextElementSibling;
-  errorField.textContent = errorMessage;
-  errorField.style.display = errorMessage ? "block" : "none";
-}
-
-function hideError(fieldId) {
-  const inputField = document.getElementById(fieldId);
-  const errorField = inputField.nextElementSibling;
-  errorField.style.display = "none";
+function toggleValidation(inputField, condition, errorFieldId) {
+  const errorField = document.getElementById(errorFieldId);
+  if (condition) {
+    inputField.classList.add("is-invalid");
+    errorField.style.display = "block";
+    return false;
+  } else {
+    inputField.classList.remove("is-invalid");
+    errorField.style.display = "none";
+    return true;
+  }
 }
 
 function showLoadingSpinner() {
