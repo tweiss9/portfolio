@@ -1,4 +1,5 @@
 let recaptchaResponse = "";
+let recaptchaSuccess = "";
 
 document.addEventListener("DOMContentLoaded", function () {
   fetch("/get-site-key")
@@ -7,11 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const recaptchaSiteKey = data.recaptchaSiteKey;
       const recaptchaDiv = document.querySelector(".g-recaptcha");
       recaptchaDiv.setAttribute("data-sitekey", recaptchaSiteKey);
-      const recaptchaScript = document.createElement("script");
-      recaptchaScript.src = "https://www.google.com/recaptcha/api.js";
-      recaptchaScript.async = true;
-      recaptchaScript.defer = true;
-      document.body.appendChild(recaptchaScript);
       const submitButton = document.getElementById("submitButton");
       submitButton.addEventListener("click", handleSubmit);
     })
@@ -21,32 +17,35 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function onRecaptchaCompleted(response) {
-  const recaptchaResponse = response;
-  const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
-  fetch("/verify-recaptcha", {
+  recaptchaResponse = response;
+  fetch(`/verify-recaptcha?recaptchaResponse=${recaptchaResponse}`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify({
-      recaptchaResponse,
-      recaptchaSecretKey,
-    }),
   })
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
-        document.getElementById("myForm").submit();
+        recaptchaSuccess = true;
+        console.log("reCAPTCHA validation successful!");
+        if (
+          !document
+            .getElementById("recaptchaError")
+            .classList.contains("d-none")
+        ) {
+          document.getElementById("recaptchaError").classList.add("d-none");
+          document.getElementById("recaptchaError").style.display = "block";
+        }
       } else {
+        recaptchaSuccess = false;
         console.error("reCAPTCHA validation failed:", data.error);
       }
     })
     .catch((error) => {
+      recaptchaSuccess = false;
       console.error("Error verifying reCAPTCHA:", error);
     });
-
-  const recaptchaErrorElement = document.getElementById("recaptchaError");
-  recaptchaErrorElement.textContent = "";
 }
 
 function scrollToSection(sectionId) {
@@ -78,21 +77,19 @@ function handleSubmit(event) {
       !messageInput.value.trim(),
       "messageError"
     ) && isValid;
+  isValid =
+    toggleValidation(
+      document.querySelector(".g-recaptcha"),
+      !recaptchaResponse,
+      "recaptchaError"
+    ) && isValid;
 
   if (!isValid) return;
-
-  if (!recaptchaResponse) {
-    const recaptchaErrorElement = document.getElementById("recaptchaError");
-    recaptchaErrorElement.textContent =
-      "Please complete the reCAPTCHA challenge.";
-    return;
-  }
 
   const formData = {
     name: nameInput.value.trim(),
     email: emailInput.value.trim(),
     message: messageInput.value.trim(),
-    recaptchaResponse: recaptchaResponse,
   };
 
   showLoadingSpinner();
@@ -105,9 +102,9 @@ function handleSubmit(event) {
     body: JSON.stringify(formData),
   })
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+    .then(() => {
       hideLoadingSpinner();
+      console.log("Email sent successfully!");
       showSuccessMessage();
     })
     .catch((error) => {
@@ -118,12 +115,24 @@ function handleSubmit(event) {
   setTimeout(() => {
     document.getElementById("myForm").reset();
     grecaptcha.reset();
+    recaptchaResponse = "";
+    recaptchaSuccess = false;
   }, 2000);
 }
 
 function toggleValidation(inputField, condition, errorFieldId) {
   const errorField = document.getElementById(errorFieldId);
-  if (condition) {
+
+  if (inputField.classList.contains("g-recaptcha")) {
+    const recaptchaErrorElement = document.getElementById("recaptchaError");
+    if (!recaptchaResponse && !recaptchaSuccess) {
+      recaptchaErrorElement.classList.remove("d-none");
+      recaptchaErrorElement.style.display = "block";
+      return false;
+    } else {
+      return true;
+    }
+  } else if (condition) {
     inputField.classList.add("is-invalid");
     errorField.style.display = "block";
     return false;
