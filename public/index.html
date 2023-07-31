@@ -5,37 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/js/scripts.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="/js/scripts.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <link rel="icon" type="image/x-icon" href="/images/tw.png" />
     <title>Tyler Weiss Portfolio</title>
   </head>
   <body>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="javascript:void(0);" onclick="scrollToSection('#about-me')">Tyler Weiss</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a
+          class="navbar-brand"
+          href="javascript:void(0);"
+          onclick="scrollToSection('#about-me')"
+          >Tyler Weiss</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#about-me')">About Me</a>
+              <a
+                class="nav-link"
+                href="javascript:void(0);"
+                onclick="scrollToSection('#about-me')"
+                >About Me</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#skills')">Skills</a>
+              <a
+                class="nav-link"
+                href="javascript:void(0);"
+                onclick="scrollToSection('#skills')"
+                >Skills</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#projects')">Projects</a>
+              <a
+                class="nav-link"
+                href="javascript:void(0);"
+                onclick="scrollToSection('#projects')"
+                >Projects</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('#contact-me')">Contact Me</a>
+              <a
+                class="nav-link"
+                href="javascript:void(0);"
+                onclick="scrollToSection('#contact-me')"
+                >Contact Me</a
+              >
             </li>
           </ul>
         </div>
@@ -46,65 +86,63 @@
     <section id="welcome" class="text-center py-5 mb-5">
       <div class="container">
         <h1 class="display-1">Hello, I'm Tyler Weiss!</h1>
-        <h3 class="mt-5 mb-3">I am a Fullstack Developer currently looking for work</h3>
-          <ul class="list-inline social-media-list">
-            <li class="list-inline-item mr-4">
-              <a href="https://github.com/tweiss9" target="_blank" rel="noopener">
-                <img
-                  src="/images/github_logo.png"
-                  alt="GitHub"
-                  class="img-fluid social-logo"
-                  width="100"
-                  height="100"
-                />
-              </a>
-            </li>
-            <li class="list-inline-item mr-5">
-              <a
-                href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/"
-                target="_blank"
-                rel="noopener"
-              >
-                <img
-                  src="/images/linkedin_logo.png"
-                  alt="LinkedIn"
-                  class="img-fluid social-logo"
-                  width="60"
-                  height="60"
-                />
-              </a>
-            </li>
-            <li class="list-inline-item mr-4">
-              <a
-                href="mailto:tylerhweiss@gmail.com?subject=Contact%20Me"
-                target="_blank"
-                rel="noopener"
-              >
-                <img
-                  src="/images/gmail_logo.png"
-                  alt="Gmail"
-                  class="img-fluid social-logo"
-                  width="80"
-                  height="80"
-                />
-              </a>
-            </li>
-            <li class="list-inline-item ml-2">
-              <a
-                href="resume.pdf" 
-                target="_blank"
-                rel="noopener"
-              >
-                <img
-                  src="/images/resume.png"
-                  alt="Resume"
-                  class="img-fluid social-logo"
-                  width="60"
-                  height="60"
-                />
-              </a>
-            </li>
-          </ul>
+        <h3 class="mt-5 mb-3">
+          I am a Fullstack Developer currently looking for work
+        </h3>
+        <ul class="list-inline social-media-list">
+          <li class="list-inline-item mr-4">
+            <a href="https://github.com/tweiss9" target="_blank" rel="noopener">
+              <img
+                src="/images/github_logo.png"
+                alt="GitHub"
+                class="img-fluid social-logo"
+                width="100"
+                height="100"
+              />
+            </a>
+          </li>
+          <li class="list-inline-item mr-5">
+            <a
+              href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/linkedin_logo.png"
+                alt="LinkedIn"
+                class="img-fluid social-logo"
+                width="60"
+                height="60"
+              />
+            </a>
+          </li>
+          <li class="list-inline-item mr-4">
+            <a
+              href="mailto:tylerhweiss@gmail.com?subject=Contact%20Me"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/gmail_logo.png"
+                alt="Gmail"
+                class="img-fluid social-logo"
+                width="80"
+                height="80"
+              />
+            </a>
+          </li>
+          <li class="list-inline-item ml-2">
+            <a href="resume.pdf" target="_blank" rel="noopener">
+              <img
+                src="/images/resume.png"
+                alt="Resume"
+                class="img-fluid social-logo"
+                width="60"
+                height="60"
+              />
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -113,15 +151,15 @@
       <div class="container">
         <h2 class="text-center display-4 mb-4">About Me</h2>
         <h5 class="ml-5 mr-5">
-          Welcome to my portfolio website! I am a dedicated Computer Science 
-          graduate from Temple University. I am equipped with a strong foundation 
-          in both frontend and backend development as well as expertise in 
-          network security and IT services. My passion for coding is broad 
-          as I am constantly staying up-to-date with the latest technologies. 
-          Now, I am seeking opportunities to apply my skills and knowledge in a 
-          full-time position within the computer science field. Please explore 
-          my projects, portfolio and resume and I hope you find the potential 
-          for a rewarding professional collaboration. 
+          Welcome to my portfolio website! I am a dedicated Computer Science
+          graduate from Temple University. I am equipped with a strong
+          foundation in both frontend and backend development as well as
+          expertise in network security and IT services. My passion for coding
+          is broad as I am constantly staying up-to-date with the latest
+          technologies. Now, I am seeking opportunities to apply my skills and
+          knowledge in a full-time position within the computer science field.
+          Please explore my projects, portfolio and resume and I hope you find
+          the potential for a rewarding professional collaboration.
         </h5>
       </div>
     </section>
@@ -171,7 +209,7 @@
               <li>Network Security</li>
             </ul>
           </div>
-        </div>        
+        </div>
       </div>
     </section>
 
@@ -185,12 +223,17 @@
               <h3 class="card-title">Spotify Playlist Sorter</h3>
               <p class="card-text">
                 I created a Flask web application that sorts a user's Spotify
-                playlists by alphabetical order based on song title, artist title,
-                and release date.
+                playlists by alphabetical order based on song title, artist
+                title, and release date.
               </p>
               <div class="mt-auto">
                 <a href="#" class="btn btn-primary">View Project</a>
-                <img src="images/github_logo.png" alt="" width="60" height="60">
+                <img
+                  src="images/github_logo.png"
+                  alt=""
+                  width="60"
+                  height="60"
+                />
               </div>
             </div>
           </div>
@@ -198,76 +241,130 @@
             <div class="card-body d-flex flex-column text-center">
               <h3 class="card-title">Coming Soon</h3>
               <p class="card-text">
-                We're working on a new project and will be launching it soon. Stay tuned for updates!
+                We're working on a new project and will be launching it soon.
+                Stay tuned for updates!
               </p>
               <div class="mt-auto">
                 <a href="#" class="btn btn-secondary disabled">Coming Soon</a>
-                <img src="images/github_logo.png" alt="" height="60" width="60">
+                <img
+                  src="images/github_logo.png"
+                  alt=""
+                  height="60"
+                  width="60"
+                />
               </div>
             </div>
           </div>
           <!-- Add more project cards here -->
         </div>
       </div>
-    </section>    
-  
+    </section>
+
     <!-- Contact Me Section -->
-<section id="contact-me" class="pb-5 mb-5">
-  <div class="container">
-    <h2 class="text-center display-4">Contact Me</h2>
-    <p class="text-center">Feel free to complete this form, and I will follow up with you promptly.</p>
-    <div class="col-md-6 mx-auto">
-      <form id="myForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-          <div id="nameError" class="invalid-feedback">Please enter your name.</div>
+    <section id="contact-me" class="pb-5 mb-5">
+      <div class="container">
+        <h2 class="text-center display-4">Contact Me</h2>
+        <p class="text-center">
+          Feel free to complete this form, and I will follow up with you
+          promptly.
+        </p>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <form id="myForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Enter your name"
+                  required
+                />
+                <div id="nameError" class="invalid-feedback">
+                  Please enter your name.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <div id="emailError" class="invalid-feedback">
+                  Please enter a valid email.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  rows="3"
+                  placeholder="Enter your message"
+                  required
+                ></textarea>
+                <div id="messageError" class="invalid-feedback">
+                  Please enter your message.
+                </div>
+              </div>
+              <div class="form-group">
+                <div
+                  class="g-recaptcha"
+                  data-callback="onRecaptchaCompleted"
+                  data-sitekey="site-key-here"
+                ></div>
+                <div id="recaptchaError" class="invalid-feedback">
+                  Please check the reCAPTCHA box.
+                </div>
+              </div>
+              <div class="form-group">
+                <button
+                  id="submitButton" 
+                  type="submit"
+                  class="btn btn-primary btn-block align-items-stretch"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+            <div
+              id="loadingMessage"
+              class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1"
+              role="alert"
+            >
+              <div class="spinner-border text-primary mr-2" role="status"></div>
+              Sending email...
+            </div>
+            <div
+              id="successMessage"
+              class="alert alert-success d-none align-items-center justify-content-center flex-grow-1"
+              role="alert"
+            >
+              Message sent!
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-          <div id="emailError" class="invalid-feedback">Please enter a valid email.</div>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea class="form-control" id="message" rows="3" placeholder="Enter your message" required></textarea>
-          <div id="messageError" class="invalid-feedback">Please enter your message.</div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block align-items-stretch" onclick="handleSubmit(event)">Submit</button>
-        </div>
-      </form>
-      <div
-        id="loadingMessage"
-        class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1"
-        role="alert"
-      >
-        <div
-          class="spinner-border text-primary mr-2"
-          role="status"
-        ></div>
-        Sending email...
       </div>
-      <div
-        id="successMessage"
-        class="alert alert-success d-none align-items-center justify-content-center flex-grow-1"
-        role="alert"
-      >
-        Message sent!
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- Footer Section -->
-    <footer class="footer pb-5 mb-5">
+    <footer class="footer pt-5 mt-5">
       <div class="container">
         <div class="row justify-content-center align-items-center">
-          <div class="col-md-8 d-flex text-center justify-content-center align-items-center">
+          <div
+            class="col-md-8 d-flex text-center justify-content-center align-items-center"
+          >
             <p>&copy; 2023 Tyler Weiss. All rights reserved.</p>
             <ul class="list-inline social-media-list">
               <li class="list-inline-item mr-0">
-                <a href="https://github.com/tweiss9" target="_blank" rel="noopener">
+                <a
+                  href="https://github.com/tweiss9"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <img
                     src="/images/github_logo.png"
                     alt="GitHub"
