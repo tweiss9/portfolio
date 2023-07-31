@@ -5,14 +5,14 @@ const path = require('path');
 const app = express();
 const { sendEmail } = require('./public/js/sendEmail.js');
 
-//todo: fill in reCAPTCHA secret key
-const recaptchaSecretKey = 'FILL_IN';
+app.set('view engine', 'ejs'); 
 
 const crypto = require('crypto');
 const nonce = crypto.randomBytes(16).toString('base64');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
   const userAgent = req.headers['user-agent'];
@@ -30,19 +30,29 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/get-site-key', (req, res) => {
+  const recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
+  res.json({ recaptchaSiteKey });
+});
 
 app.post('/verify-recaptcha', async (req, res) => {
-  const { recaptchaResponse } = req.body;
+  const { recaptchaResponse, recaptchaSecretKey} = req.body;
 
   try {
+    console.log("Received reCAPTCHA response:", recaptchaResponse);
     const recaptchaVerification = await axios.post(
       'https://www.google.com/recaptcha/api/siteverify',
       {
-        secret: recaptchaSecretKey,
         response: recaptchaResponse,
+        secret: recaptchaSecretKey,
       }
     );
+
+    console.log("reCAPTCHA verification data:", recaptchaVerification.data);
 
     if (recaptchaVerification.data.success) {
       res.json({ success: true });

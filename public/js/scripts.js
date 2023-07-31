@@ -1,25 +1,52 @@
-let recaptchaResponse = '';
+let recaptchaResponse = "";
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("/get-site-key")
+    .then((response) => response.json())
+    .then((data) => {
+      const recaptchaSiteKey = data.recaptchaSiteKey;
+      const recaptchaDiv = document.querySelector(".g-recaptcha");
+      recaptchaDiv.setAttribute("data-sitekey", recaptchaSiteKey);
+      const recaptchaScript = document.createElement("script");
+      recaptchaScript.src = "https://www.google.com/recaptcha/api.js";
+      recaptchaScript.async = true;
+      recaptchaScript.defer = true;
+      document.body.appendChild(recaptchaScript);
+      const submitButton = document.getElementById("submitButton");
+      submitButton.addEventListener("click", handleSubmit);
+    })
+    .catch((error) => {
+      console.error("Error fetching reCAPTCHA site key:", error);
+    });
+});
 
 function onRecaptchaCompleted(response) {
-  recaptchaResponse = response;
+  const recaptchaResponse = response;
+  const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
   fetch("/verify-recaptcha", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ recaptchaResponse }),
+    body: JSON.stringify({
+      recaptchaResponse,
+      recaptchaSecretKey,
+    }),
   })
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
         document.getElementById("myForm").submit();
       } else {
-        console.error("reCAPTCHA validation failed");
+        console.error("reCAPTCHA validation failed:", data.error);
       }
     })
     .catch((error) => {
       console.error("Error verifying reCAPTCHA:", error);
     });
+
+  const recaptchaErrorElement = document.getElementById("recaptchaError");
+  recaptchaErrorElement.textContent = "";
 }
 
 function scrollToSection(sectionId) {
@@ -55,8 +82,9 @@ function handleSubmit(event) {
   if (!isValid) return;
 
   if (!recaptchaResponse) {
-    // todo Show an error message
-    console.error("Please complete the reCAPTCHA challenge.");
+    const recaptchaErrorElement = document.getElementById("recaptchaError");
+    recaptchaErrorElement.textContent =
+      "Please complete the reCAPTCHA challenge.";
     return;
   }
 
@@ -89,6 +117,7 @@ function handleSubmit(event) {
 
   setTimeout(() => {
     document.getElementById("myForm").reset();
+    grecaptcha.reset();
   }, 2000);
 }
 
@@ -122,19 +151,3 @@ function showSuccessMessage() {
     successMessage.classList.add("d-none");
   }, 2000);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  // todo Add reCAPTCHA
-  const recaptchaSiteKey = "site-key-here";
-  const recaptchaDiv = document.querySelector(".g-recaptcha");
-  recaptchaDiv.setAttribute("data-sitekey", recaptchaSiteKey);
-
-  const recaptchaScript = document.createElement("script");
-  recaptchaScript.src = "https://www.google.com/recaptcha/api.js";
-  recaptchaScript.async = true;
-  recaptchaScript.defer = true;
-  document.body.appendChild(recaptchaScript);
-
-  const submitButton = document.getElementById("submitButton");
-  submitButton.addEventListener("click", handleSubmit);
-});
