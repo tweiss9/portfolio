@@ -162,3 +162,8 @@ function showSuccessMessage() {
     successMessage.classList.add("d-none");
   }, 2000);
 }
+
+function handleCSPViolation(event) {
+  console.log("CSP Violation Report:", event);
+}
+window.addEventListener("cspviolation", handleCSPViolation);

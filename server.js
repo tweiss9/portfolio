@@ -19,20 +19,15 @@ app.use((req, res, next) => {
   if (userAgent.includes("Chrome") || userAgent.includes("Firefox")) {
     res.setHeader(
       "Content-Security-Policy",
-      `script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com 'nonce-${nonce}' 'unsafe-inline'`
+      `default-src 'self'; script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com 'nonce-${nonce}' 'unsafe-inline'; report-uri /csp-report-endpoint`
     );
-  } else if (userAgent.includes("Edge")) {
+  } else if (userAgent.includes("Edge") || userAgent.includes("WebKit")) {
     res.setHeader(
       "Content-Security-Policy",
-      "script-src 'self' 'unsafe-inline'"
-    );
-  } else if (userAgent.includes("WebKit")) {
-    res.setHeader(
-      "Content-Security-Policy",
-      "script-src 'self' 'unsafe-inline'"
+      "default-src 'self'; script-src 'self' 'unsafe-inline'"
     );
   } else {
-    res.setHeader("Content-Security-Policy", "script-src 'self'");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'");
   }
   next();
 });
@@ -85,6 +80,13 @@ app.post("/send-email", async (req, res) => {
       res.status(500).json({ success: false, error: error });
     });
 });
+
+app.post("/csp-report-endpoint", (req, res) => {
+  const cspReport = req.body;
+  console.log("CSP Violation Report Server.js:", cspReport);
+  res.sendStatus(200);
+});
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
