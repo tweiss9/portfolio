@@ -6,7 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
     <script src="/js/scripts.js" defer></script>
     <link
       rel="stylesheet"
@@ -24,12 +23,11 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a
           class="navbar-brand"
-          href="javascript:void(0);"
-          onclick="scrollToSection('#about-me')"
+          onclick="scrollToSection('#')"
           >Tyler Weiss</a
         >
         <button
@@ -48,7 +46,6 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="javascript:void(0);"
                 onclick="scrollToSection('#about-me')"
                 >About Me</a
               >
@@ -56,7 +53,6 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="javascript:void(0);"
                 onclick="scrollToSection('#skills')"
                 >Skills</a
               >
@@ -64,7 +60,6 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="javascript:void(0);"
                 onclick="scrollToSection('#projects')"
                 >Projects</a
               >
@@ -72,7 +67,6 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="javascript:void(0);"
                 onclick="scrollToSection('#contact-me')"
                 >Contact Me</a
               >
@@ -83,10 +77,10 @@
     </nav>
 
     <!--Welcome Section-->
-    <section id="welcome" class="text-center py-5 mb-5">
+    <section id="welcome" class="text-center py-5 my-5">
       <div class="container">
-        <h1 class="display-1">Hello, I'm Tyler Weiss!</h1>
-        <h3 class="mt-5 mb-3">
+        <h1 class="display-2 py-5">Hello, I'm Tyler Weiss!</h1>
+        <h3>
           I am a Fullstack Developer currently looking for work
         </h3>
         <ul class="list-inline social-media-list">
@@ -213,12 +207,12 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Projects Section -->
     <section id="projects" class="pb-5 mb-5">
       <div class="container">
         <h2 class="text-center display-4 mb-4">Projects</h2>
         <div class="card-deck">
-          <div class="card">
+          <div class="card bg-transparent border-3 border-secondary rounded-lg">
             <div class="card-body d-flex flex-column text-center">
               <h3 class="card-title">Spotify Playlist Sorter</h3>
               <p class="card-text">
@@ -228,16 +222,22 @@
               </p>
               <div class="mt-auto">
                 <a href="#" class="btn btn-primary">View Project</a>
-                <img
-                  src="images/github_logo.png"
-                  alt=""
-                  width="60"
-                  height="60"
-                />
+                <a
+                  href="https://github.com/tweiss9/Sort-Spotify-Playlist"
+                  title="Link to my GitHub profile"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="images/github_logo.png"
+                    alt=""
+                    width="60"
+                    height="60"
+                /></a>
               </div>
             </div>
           </div>
-          <div class="card">
+          <div class="card bg-transparent border-3 border-secondary rounded-lg">
             <div class="card-body d-flex flex-column text-center">
               <h3 class="card-title">Coming Soon</h3>
               <p class="card-text">
@@ -256,6 +256,18 @@
             </div>
           </div>
           <!-- Add more project cards here -->
+          <p class="text-center p-5">
+            This portfolio was created with a combination of front-end
+            technologies, including HTML, CSS, and JavaScript, along with
+            Node.js for the back-end. You can view the source code
+            <a
+              href="https://github.com/tweiss9/portfolio"
+              title=""
+              target="_blank"
+              rel="noopener"
+              >here</a
+            >.
+          </p>
         </div>
       </div>
     </section>
@@ -263,7 +275,7 @@
     <!-- Contact Me Section -->
     <section id="contact-me" class="pb-5 mb-5">
       <div class="container">
-        <h2 class="text-center display-4">Contact Me</h2>
+        <h2 class="text-center display-4 pb-3">Contact Me</h2>
         <p class="text-center">
           Feel free to complete this form, and I will follow up with you
           promptly.
@@ -275,7 +287,7 @@
                 <label for="name">Name</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control transparent-input"
                   id="name"
                   placeholder="Enter your name"
                   required
@@ -288,7 +300,7 @@
                 <label for="email">Email</label>
                 <input
                   type="email"
-                  class="form-control"
+                  class="form-control transparent-input"
                   id="email"
                   placeholder="Enter your email"
                   required
@@ -300,7 +312,7 @@
               <div class="form-group">
                 <label for="message">Message</label>
                 <textarea
-                  class="form-control"
+                  class="form-control transparent-input"
                   id="message"
                   rows="3"
                   placeholder="Enter your message"

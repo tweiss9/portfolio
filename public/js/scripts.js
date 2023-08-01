@@ -50,7 +50,9 @@ function onRecaptchaCompleted(response) {
 
 function scrollToSection(sectionId) {
   const targetSection = document.querySelector(sectionId);
-  targetSection.scrollIntoView({ behavior: "smooth" });
+  const navbarHeight = document.querySelector(".navbar").offsetHeight;
+  const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+  window.scrollTo({ top: targetPosition, behavior: "smooth" });
 }
 
 function handleSubmit(event) {
