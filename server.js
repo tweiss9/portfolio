@@ -16,23 +16,21 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
   const userAgent = req.headers["user-agent"];
-  if (userAgent.includes("Chrome")) {
+  if (userAgent.includes("Chrome") || userAgent.includes("Firefox")) {
     res.setHeader(
       "Content-Security-Policy",
-      `script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com 'nonce-${nonce}'`
+      `script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com 'nonce-${nonce}' 'unsafe-inline'`
     );
   } else if (userAgent.includes("Edge")) {
     res.setHeader(
       "Content-Security-Policy",
       "script-src 'self' 'unsafe-inline'"
     );
-  } else if (userAgent.includes("Firefox")) {
+  } else if (userAgent.includes("WebKit")) {
     res.setHeader(
       "Content-Security-Policy",
-      `script-src 'self' 'nonce-${nonce}'`
+      "script-src 'self' 'unsafe-inline'"
     );
-  } else if (userAgent.includes("WebKit")) {
-    res.setHeader("Content-Security-Policy", "script-src 'self'");
   } else {
     res.setHeader("Content-Security-Policy", "script-src 'self'");
   }
@@ -45,7 +43,7 @@ app.get("/", (_, res) => {
 
 app.get("/get-site-key", (_, res) => {
   const recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
-  res.json({ recaptchaSiteKey });
+  res.json({ recaptchaSiteKey, nonce });
 });
 
 app.post("/verify-recaptcha", async (req, res) => {

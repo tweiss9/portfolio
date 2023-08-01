@@ -6,7 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="/js/scripts.js" defer></script>
+    <script src="/js/scripts.js" defer nonce="<%= nonce %>"></script>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -25,11 +25,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a
-          class="navbar-brand"
-          onclick="scrollToSection('#')"
-          >Tyler Weiss</a
-        >
+        <a class="navbar-brand" onclick="scrollToSection('#')">Tyler Weiss</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -44,30 +40,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a
-                class="nav-link"
-                onclick="scrollToSection('#about-me')"
+              <a class="nav-link" onclick="scrollToSection('#about-me')"
                 >About Me</a
               >
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                onclick="scrollToSection('#skills')"
+              <a class="nav-link" onclick="scrollToSection('#skills')"
                 >Skills</a
               >
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                onclick="scrollToSection('#projects')"
+              <a class="nav-link" onclick="scrollToSection('#projects')"
                 >Projects</a
               >
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                onclick="scrollToSection('#contact-me')"
+              <a class="nav-link" onclick="scrollToSection('#contact-me')"
                 >Contact Me</a
               >
             </li>
@@ -80,9 +68,7 @@
     <section id="welcome" class="text-center py-5 my-5">
       <div class="container">
         <h1 class="display-2 py-5">Hello, I'm Tyler Weiss!</h1>
-        <h3>
-          I am a Fullstack Developer currently looking for work
-        </h3>
+        <h3>I am a Fullstack Developer currently looking for work</h3>
         <ul class="list-inline social-media-list">
           <li class="list-inline-item mr-4">
             <a href="https://github.com/tweiss9" target="_blank" rel="noopener">
@@ -256,10 +242,10 @@
             </div>
           </div>
           <!-- Add more project cards here -->
-          <p class="text-center p-5">
-            This portfolio was created with a combination of front-end
-            technologies, including HTML, CSS, and JavaScript, along with
-            Node.js for the back-end. You can view the source code
+          <p class="text-center m-3 p-2">
+            This portfolio was created with a combination of HTML, CSS,
+            Bootstrap and JavaScript, along with Node.js for the server. You can
+            view the source code
             <a
               href="https://github.com/tweiss9/portfolio"
               title=""
