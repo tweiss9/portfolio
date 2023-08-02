@@ -33,11 +33,12 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (_, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  let recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
+  res.render("index", { recaptchaSiteKey });
 });
 
 app.get("/get-site-key", (_, res) => {
-  const recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
+  let recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
   res.json({ recaptchaSiteKey, nonce });
 });
 

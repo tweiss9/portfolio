@@ -316,9 +316,10 @@
               </div>
               <div class="form-group">
                 <div
+                  id="recaptchaDiv"
                   class="g-recaptcha"
                   data-callback="onRecaptchaCompleted"
-                  data-sitekey="%=recaptchaSiteKey%"
+                  data-sitekey="%= recaptchaSiteKey %"
                 ></div>
                 <div id="recaptchaError" class="invalid-feedback d-none">
                   Please check the reCAPTCHA box.
@@ -415,7 +416,11 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script
+      src="https://www.google.com/recaptcha/api.js?render=explicit"
+      async
+      defer
+    ></script>
     <script src="/js/scripts.js" defer></script>
   </body>
 </html>

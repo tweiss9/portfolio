@@ -1,20 +1,92 @@
 let recaptchaResponse = "";
 let recaptchaSuccess = "";
+let recaptchaSiteKey;
+let recaptchaInitialized = false;
+
+window.addEventListener("cspviolation", handleCSPViolation);
+window.addEventListener("beforeunload", () => {
+  sessionStorage.removeItem("recaptchaRendered");
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   fetch("/get-site-key")
     .then((response) => response.json())
     .then((data) => {
-      const recaptchaSiteKey = data.recaptchaSiteKey;
+      recaptchaSiteKey = data.recaptchaSiteKey;
       const recaptchaDiv = document.querySelector(".g-recaptcha");
       recaptchaDiv.setAttribute("data-sitekey", recaptchaSiteKey);
       const submitButton = document.getElementById("submitButton");
       submitButton.addEventListener("click", handleSubmit);
+
+      if (!recaptchaInitialized) {
+        recaptchaInitialized = true;
+        initializeRecaptcha().catch((error) => {
+          console.error("Error initializing reCAPTCHA:", error);
+          recaptchaInitialized = false;
+        });
+      }
     })
     .catch((error) => {
       console.error("Error fetching reCAPTCHA site key:", error);
     });
 });
+
+function loadRecaptchaScript() {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("load", resolve);
+    script.addEventListener("error", reject);
+    document.head.appendChild(script);
+  });
+}
+
+function initializeRecaptcha() {
+  return new Promise((resolve, reject) => {
+    if (typeof grecaptcha === "undefined") {
+      loadRecaptchaScript()
+        .then(() => {
+          grecaptcha.ready(() => {
+            try {
+              grecaptcha.render("recaptchaDiv", {
+                sitekey: recaptchaSiteKey,
+                callback: onRecaptchaCompleted,
+                "error-callback": onRecaptchaError,
+              });
+
+              resolve();
+            } catch (error) {
+              reject(error);
+            }
+          });
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    } else {
+      grecaptcha.ready(() => {
+        try {
+          grecaptcha.render("recaptchaDiv", {
+            sitekey: recaptchaSiteKey,
+            callback: onRecaptchaCompleted,
+            "error-callback": onRecaptchaError,
+          });
+
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }
+  });
+}
+
+function onRecaptchaError(error) {
+  console.error("Error during reCAPTCHA verification.", error);
+  recaptchaSuccess = false;
+}
 
 function onRecaptchaCompleted(response) {
   recaptchaResponse = response;
@@ -43,15 +115,15 @@ function onRecaptchaCompleted(response) {
       }
     })
     .catch((error) => {
-      recaptchaSuccess = false;
-      console.error("Error verifying reCAPTCHA:", error);
+      onRecaptchaError(error);
     });
 }
 
 function scrollToSection(sectionId) {
   const targetSection = document.querySelector(sectionId);
   const navbarHeight = document.querySelector(".navbar").offsetHeight;
-  const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+  const targetPosition =
+    targetSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
   window.scrollTo({ top: targetPosition, behavior: "smooth" });
 }
 
@@ -166,4 +238,3 @@ function showSuccessMessage() {
 function handleCSPViolation(event) {
   console.log("CSP Violation Report:", event);
 }
-window.addEventListener("cspviolation", handleCSPViolation);
