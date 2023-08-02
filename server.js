@@ -32,11 +32,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
-});
-
 app.get("/", (_, res) => {
   let recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
   res.render("index", { recaptchaSiteKey });
@@ -91,6 +86,14 @@ app.post("/csp-report-endpoint", (req, res) => {
   const cspReport = req.body;
   console.log("CSP Violation Report Server.js:", cspReport);
   res.sendStatus(200);
+});
+
+app.use((req, res, next) => {
+  if (!req.route) {
+    res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
+  } else {
+    next();
+  }
 });
 
 const port = 3000;
