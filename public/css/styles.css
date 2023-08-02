@@ -2,6 +2,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-image: url("/images/background.png");
   background-repeat: repeat;
+  height: 100vh;
 }
 
 .cursor-pointer {

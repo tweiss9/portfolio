@@ -19,17 +19,22 @@ app.use((req, res, next) => {
   if (userAgent.includes("Chrome") || userAgent.includes("Firefox")) {
     res.setHeader(
       "Content-Security-Policy",
-      `default-src 'self'; script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com 'nonce-${nonce}' 'unsafe-inline'; report-uri /csp-report-endpoint`
+      `default-src 'self'; script-src 'self' https://ajax.googleapis.com https://maxcdn.bootstrapcdn.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com 'nonce-${nonce}' 'unsafe-inline'; style-src 'self' https://maxcdn.bootstrapcdn.com 'unsafe-inline'; report-uri /csp-report-endpoint`
     );
   } else if (userAgent.includes("Edge") || userAgent.includes("WebKit")) {
     res.setHeader(
       "Content-Security-Policy",
-      "default-src 'self'; script-src 'self' 'unsafe-inline'"
+      "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
     );
   } else {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self';");
   }
   next();
+});
+
+
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
 });
 
 app.get("/", (_, res) => {
