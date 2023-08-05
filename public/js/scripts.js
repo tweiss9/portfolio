@@ -2,6 +2,7 @@ let recaptchaResponse = "";
 let recaptchaSuccess = "";
 let recaptchaSiteKey;
 let recaptchaInitialized = false;
+const prefix = "https://us-central1-tylerhweiss.cloudfunctions.net/api"
 
 window.addEventListener("cspviolation", handleCSPViolation);
 window.addEventListener("beforeunload", () => {
@@ -9,7 +10,7 @@ window.addEventListener("beforeunload", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("/get-site-key")
+  fetch(prefix + "/get-site-key")
     .then((response) => response.json())
     .then((data) => {
       recaptchaSiteKey = data.recaptchaSiteKey;
@@ -90,7 +91,7 @@ function onRecaptchaError(error) {
 
 function onRecaptchaCompleted(response) {
   recaptchaResponse = response;
-  fetch(`/verify-recaptcha?recaptchaResponse=${recaptchaResponse}`, {
+  fetch(prefix + `/verify-recaptcha?recaptchaResponse=${recaptchaResponse}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -168,7 +169,7 @@ function handleSubmit(event) {
 
   showLoadingSpinner();
 
-  fetch("/send-email", {
+  fetch(prefix + "/send-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
