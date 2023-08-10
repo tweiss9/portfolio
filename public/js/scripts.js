@@ -10,6 +10,15 @@ window.addEventListener("beforeunload", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const navigationLinks = document.querySelectorAll(".nav-link");
+  navigationLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const sectionId = link.getAttribute("href");
+      scrollToSection(sectionId);
+    });
+  });
+
   fetch(prefix + "/get-site-key")
     .then((response) => response.json())
     .then((data) => {
