@@ -2,7 +2,7 @@ let recaptchaResponse = "";
 let recaptchaSuccess = "";
 let recaptchaSiteKey;
 let recaptchaInitialized = false;
-const prefix = "https://us-central1-tylerhweiss.cloudfunctions.net/api"
+const prefix = "https://us-central1-tylerhweiss.cloudfunctions.net/api";
 
 window.addEventListener("cspviolation", handleCSPViolation);
 window.addEventListener("beforeunload", () => {
@@ -28,30 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const submitButton = document.getElementById("submitButton");
       submitButton.addEventListener("click", handleSubmit);
 
-      if (!recaptchaInitialized) {
-        recaptchaInitialized = true;
-        initializeRecaptcha().catch((error) => {
-          console.error("Error initializing reCAPTCHA:", error);
-          recaptchaInitialized = false;
-        });
-      }
+      initializeRecaptcha().catch((error) => {
+        console.error("Error initializing reCAPTCHA:", error);
+      });
     })
     .catch((error) => {
       console.error("Error fetching reCAPTCHA site key:", error);
     });
 });
-
-function loadRecaptchaScript() {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js";
-    script.async = true;
-    script.defer = true;
-    script.addEventListener("load", resolve);
-    script.addEventListener("error", reject);
-    document.head.appendChild(script);
-  });
-}
 
 function initializeRecaptcha() {
   return new Promise((resolve, reject) => {
@@ -92,6 +76,19 @@ function initializeRecaptcha() {
     }
   });
 }
+
+function loadRecaptchaScript() {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("load", resolve);
+    script.addEventListener("error", reject);
+    document.head.appendChild(script);
+  });
+}
+
 
 function onRecaptchaError(error) {
   console.error("Error during reCAPTCHA verification.", error);

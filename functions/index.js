@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
@@ -12,7 +13,7 @@ app.set("view engine", "ejs");
 const crypto = require("crypto");
 const nonce = crypto.randomBytes(16).toString("base64");
 
-app.use(cors({origin: ["https://tylerhweiss.web.app", "https://tylerhweiss.com"]}));
+app.use(cors({origin: ["https://tylerhweiss.web.app", "https://tylerhweiss.com", "http://localhost:5000", "http://127.0.0.1:5000"]}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "")));
@@ -100,8 +101,3 @@ const api = functions.https.onRequest(app);
 module.exports = {
   api,
 };
-
-// const port = 3000;
-// app.listen(port, () => {
-//   console.log(`Server is running on http://localhost:${port}`);
-// });
