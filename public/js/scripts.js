@@ -19,15 +19,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  const submitButton = document.getElementById("submitButton");
+  submitButton.addEventListener("click", handleSubmit);
+
   fetch(prefix + "/get-site-key")
-    .then((response) => response.json())
+  .then((response) => {
+    if (!response) {
+      throw new Error("Response is empty");
+    }
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
     .then((data) => {
       recaptchaSiteKey = data.recaptchaSiteKey;
+      console.log("reCAPTCHA site key:", recaptchaSiteKey);
       const recaptchaDiv = document.querySelector(".g-recaptcha");
       recaptchaDiv.setAttribute("data-sitekey", recaptchaSiteKey);
-      const submitButton = document.getElementById("submitButton");
-      submitButton.addEventListener("click", handleSubmit);
-
       initializeRecaptcha().catch((error) => {
         console.error("Error initializing reCAPTCHA:", error);
       });
@@ -88,7 +97,6 @@ function loadRecaptchaScript() {
     document.head.appendChild(script);
   });
 }
-
 
 function onRecaptchaError(error) {
   console.error("Error during reCAPTCHA verification.", error);
