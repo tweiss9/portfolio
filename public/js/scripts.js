@@ -19,6 +19,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  const homeLink = document.querySelector(".home-link");
+  if (homeLink) {
+    homeLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  } else {
+    console.error("Could not find home-link element");
+  }
+
   const submitButton = document.getElementById("submitButton");
   submitButton.addEventListener("click", handleSubmit);
 
@@ -34,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
   })
     .then((data) => {
       recaptchaSiteKey = data.recaptchaSiteKey;
-      console.log("reCAPTCHA site key:", recaptchaSiteKey);
       const recaptchaDiv = document.querySelector(".g-recaptcha");
       recaptchaDiv.setAttribute("data-sitekey", recaptchaSiteKey);
       initializeRecaptcha().catch((error) => {
