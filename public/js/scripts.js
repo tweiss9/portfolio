@@ -33,15 +33,15 @@ document.addEventListener("DOMContentLoaded", function () {
   submitButton.addEventListener("click", handleSubmit);
 
   fetch(prefix + "/get-site-key")
-  .then((response) => {
-    if (!response) {
-      throw new Error("Response is empty");
-    }
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
+    .then((response) => {
+      if (!response) {
+        throw new Error("Response is empty");
+      }
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
     .then((data) => {
       recaptchaSiteKey = data.recaptchaSiteKey;
       const recaptchaDiv = document.querySelector(".g-recaptcha");
