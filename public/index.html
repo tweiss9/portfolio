@@ -15,393 +15,378 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
   </head>
-  <body>
+  <body class="container">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a
-          class="navbar-brand nav-link cursor-pointer text-white"
-          href="#welcome"
-          >Tyler Weiss</a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer text-white" href="#about-me"
-                >About Me</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer text-white" href="#skills"
-                >Skills</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer text-white" href="#projects"
-                >Projects</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer text-white" href="#contact-me"
-                >Contact Me</a
-              >
-            </li>
-          </ul>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top px-5">
+      <a class="navbar-brand nav-link cursor-pointer text-white" href="#welcome"
+        >Tyler Weiss</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer text-white" href="#about-me"
+              >About Me</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer text-white" href="#skills"
+              >Skills</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer text-white" href="#projects"
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer text-white" href="#contact-me"
+              >Contact Me</a
+            >
+          </li>
+        </ul>
       </div>
     </nav>
 
     <!--Welcome Section-->
     <section id="welcome" class="text-center py-5 my-5">
-      <div class="container">
-        <h1 id="welcome-big-text" class="display-2 mb-5 py-5">
-          Hello, I'm Tyler Weiss!
-        </h1>
-        <h2>
-          I am a Computer Scientist currently looking for employment
-          opportunities
-        </h2>
-        <ul class="list-inline social-media-list">
-          <li class="list-inline-item mr-4 my-5">
-            <a href="https://github.com/tweiss9" target="_blank" rel="noopener">
-              <img
-                src="images/github_logo.png"
-                alt="GitHub"
-                class="img-fluid social-logo"
-                width="60"
-                height="60"
-              />
-            </a>
-          </li>
-          <li class="list-inline-item ml-3 mr-5 my-5">
-            <a
-              href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="/images/linkedIn_logo.png"
-                alt="LinkedIn"
-                class="img-fluid social-logo"
-                width="60"
-                height="60"
-              />
-            </a>
-          </li>
-          <li class="list-inline-item mr-4 my-5">
-            <a
-              href="mailto:tylerhweiss@gmail.com?subject=Contact%20Me"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="/images/gmail_logo.png"
-                alt="Gmail"
-                class="img-fluid social-logo"
-                width="80"
-                height="80"
-              />
-            </a>
-          </li>
-          <li class="list-inline-item ml-2 my-5">
-            <a href="tyler-weiss-resume.pdf" target="_blank" rel="noopener">
-              <img
-                src="/images/resume.png"
-                alt="Resume"
-                class="img-fluid social-logo"
-                width="60"
-                height="60"
-              />
-            </a>
-          </li>
-        </ul>
-      </div>
+      <h1 id="welcome-big-text" class="display-2 mb-5 py-5">
+        Hello, I'm Tyler Weiss!
+      </h1>
+      <h2>
+        I am a Computer Scientist currently looking for employment opportunities
+      </h2>
+      <ul class="list-inline social-media-list">
+        <li class="list-inline-item mr-4 my-5">
+          <a href="https://github.com/tweiss9" target="_blank" rel="noopener">
+            <img
+              src="images/github_logo.png"
+              alt="GitHub"
+              class="img-fluid social-logo"
+              width="60"
+              height="60"
+            />
+          </a>
+        </li>
+        <li class="list-inline-item ml-3 mr-5 my-5">
+          <a
+            href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="/images/linkedIn_logo.png"
+              alt="LinkedIn"
+              class="img-fluid social-logo"
+              width="60"
+              height="60"
+            />
+          </a>
+        </li>
+        <li class="list-inline-item mr-4 my-5">
+          <a
+            href="mailto:tylerhweiss@gmail.com?subject=Contact%20Me"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="/images/gmail_logo.png"
+              alt="Gmail"
+              class="img-fluid social-logo"
+              width="80"
+              height="80"
+            />
+          </a>
+        </li>
+        <li class="list-inline-item ml-2 my-5">
+          <a href="tyler-weiss-resume.pdf" target="_blank" rel="noopener">
+            <img
+              src="/images/resume.png"
+              alt="Resume"
+              class="img-fluid social-logo"
+              width="60"
+              height="60"
+            />
+          </a>
+        </li>
+      </ul>
     </section>
 
     <!-- About Me Section -->
     <section id="about-me" class="pb-5 mb-5">
-      <div class="container">
-        <h2 class="text-center display-4 mb-4">About Me</h2>
-        <h3 class="mx-5">
-          Welcome to my portfolio website! I am a dedicated Computer Science
-          graduate from Temple University. I am equipped with a strong
-          foundation in both frontend and backend development as well as
-          expertise in network security and IT services. My passion for coding
-          is broad as I am constantly staying up-to-date with the latest
-          technologies. Now, I am seeking opportunities to apply my skills and
-          knowledge in a full-time position within the computer science field.
-          Please explore my projects, portfolio and resume and I hope you find
-          the potential for a rewarding professional collaboration.
-        </h3>
-      </div>
+      <h2 class="text-center display-4 mb-4">About Me</h2>
+      <h3 class="mx-5">
+        Welcome to my portfolio website! I am a dedicated Computer Science
+        graduate from Temple University. I am equipped with a strong foundation
+        in both frontend and backend development as well as expertise in network
+        security and IT services. My passion for coding is broad as I am
+        constantly staying up-to-date with the latest technologies. Now, I am
+        seeking opportunities to apply my skills and knowledge in a full-time
+        position within the computer science field. Please explore my projects,
+        portfolio and resume and I hope you find the potential for a rewarding
+        professional collaboration.
+      </h3>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="pb-5 mb-5">
-      <div class="container">
-        <h2 class="text-center display-4 mb-4">Skills</h2>
-        <div class="justify-content-center row">
-          <div class="col-md-4">
-            <h3 class="text-center">Frontend</h3>
-            <ul class="list-unstyled text-center">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>Bootstrap</li>
-              <li>Flutter</li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h3 class="text-center">Backend</h3>
-            <ul class="list-unstyled text-center">
-              <li>Python</li>
-              <li>Dart</li>
-              <li>Java</li>
-              <li>C</li>
-              <li>C++</li>
-              <li>Node.js</li>
-              <li>Express.js</li>
-              <li>APIs</li>
-              <li>SQL</li>
-              <li>Flask</li>
-              <li>Firebase</li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h3 class="text-center">Technologies</h3>
-            <ul class="list-unstyled text-center">
-              <li>Git</li>
-              <li>GitHub</li>
-              <li>Bash</li>
-              <li>Jest</li>
-              <li>Scrum</li>
-              <li>IT Service</li>
-              <li>Android Studio</li>
-              <li>Visual Studio Code</li>
-              <li>Agile Development</li>
-              <li>Network Security</li>
-            </ul>
-          </div>
+      <h2 class="text-center display-4 mb-4">Skills</h2>
+      <div class="justify-content-center row">
+        <div class="col-md-4">
+          <h3 class="text-center">Frontend</h3>
+          <ul class="list-unstyled text-center">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Bootstrap</li>
+            <li>Flutter</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="text-center">Backend</h3>
+          <ul class="list-unstyled text-center">
+            <li>Python</li>
+            <li>Dart</li>
+            <li>Java</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>APIs</li>
+            <li>SQL</li>
+            <li>Flask</li>
+            <li>Firebase</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="text-center">Technologies</h3>
+          <ul class="list-unstyled text-center">
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Bash</li>
+            <li>Jest</li>
+            <li>Scrum</li>
+            <li>IT Service</li>
+            <li>Android Studio</li>
+            <li>Visual Studio Code</li>
+            <li>Agile Development</li>
+            <li>Network Security</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="pb-5 mb-5">
-      <div class="container">
-        <h2 class="text-center display-4 mb-4">Projects</h2>
-        <div class="card-deck">
-          <div class="card bg-transparent border-3 border-secondary rounded-lg">
-            <h3 class="card-header bg-transparent text-center">
-              Spotify Playlist Sorter
-            </h3>
-            <div class="card-body d-flex flex-column text-center">
-              <p class="card-text text-left">
-                This project showcases a Flask web application that allows users
-                to sort their Spotify playlists based on release date, track
-                name, and artist name. Additionally, the application offers the
-                option to update existing playlists or create new ones. The
-                application interacts with the Spotify Web API to login,
-                display, and modify personalized playlist data. The playlist
-                sorting algorithm was created using Python and the web
-                interfaces was created using HTML, CSS, and JavaScript.
-                <br />
-                <br />
-                <strong>Technologies Used: </strong> Python, Flask, HTML, CSS,
-                JavaScript, Spotify Web API
-              </p>
-              <div
-                class="mt-auto d-flex align-items-center justify-content-center"
-              >
-                <div class="mx-4 my-4">
-                  <a
-                    href="https://youtu.be/wrim0mVI4ow"
-                    title="Watch the YouTube video for this project"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img
-                      src="images/youtube.png"
-                      alt="Youtube"
-                      class="img-fluid social-logo"
-                      width="49"
-                      height="49"
-                  /></a>
-                </div>
-                <div class="mx-4 my-4">
-                  <a
-                    href="https://github.com/tweiss9/Sort-Spotify-Playlist"
-                    title="GitHub Repository"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img
-                      src="images/github_logo.png"
-                      alt=""
-                      width="50"
-                      height="50"
-                  /></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card bg-transparent border-3 border-secondary rounded-lg">
-            <h3 class="card-header bg-transparent text-center">
-              Portfolio Website
-            </h3>
-            <div class="card-body d-flex flex-column text-center">
-              <p class="card-text text-left">
-                This project is a personal portfolio website that showcases my
-                technical skills, a collection of my projects as well as my
-                contact information. The website is constructed using HTML for
-                structuring content, CSS for styling, and JavaScript for adding
-                interactivity. The use of Bootstrap, a CSS framework, ensures
-                the website's responsiveness and adaptability to various
-                devices. The website is hosted on a Node.js server and deployed
-                using Firebase.
-                <br />
-                <br />
-                <strong>Technologies Used: </strong> HTML, CSS, JavaScript,
-                Bootstrap, Node.js, Firebase
-              </p>
-              <div
-                class="mt-auto d-flex align-items-center justify-content-center"
-              >
-                <div class="mx-4 my-4">
+      <h2 class="text-center display-4 mb-4">Projects</h2>
+      <div class="card-deck">
+        <div class="card bg-transparent border-1 border-secondary rounded-lg">
+          <h3 class="card-header bg-transparent text-center">
+            Spotify Playlist Sorter
+          </h3>
+          <div class="card-body d-flex flex-column text-center">
+            <p class="card-text text-left">
+              This project showcases a Flask web application that allows users
+              to sort their Spotify playlists based on release date, track name,
+              and artist name. Additionally, the application offers the option
+              to update existing playlists or create new ones. The application
+              interacts with the Spotify Web API to login, display, and modify
+              personalized playlist data. The playlist sorting algorithm was
+              created using Python and the web interfaces was created using
+              HTML, CSS, and JavaScript.
+              <br />
+              <br />
+              <strong>Technologies Used: </strong> Python, Flask, HTML, CSS,
+              JavaScript, Spotify Web API
+            </p>
+            <div
+              class="mt-auto d-flex align-items-center justify-content-center"
+            >
+              <div class="mx-4 my-4">
+                <a
+                  href="https://youtu.be/wrim0mVI4ow"
+                  title="Watch the YouTube video for this project"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <img
-                    class="cursor-pointer home-link"
-                    src="images/house.png"
-                    alt="Home"
-                    width="52"
-                    height="52"
-                  />
-                </div>
-                <div class="mx-4 my-4">
-                  <a
-                    href="https://github.com/tweiss9/portfolio"
-                    title="GitHub Repository Link"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img
-                      src="images/github_logo.png"
-                      alt=""
-                      height="52"
-                      width="52"
-                    />
-                  </a>
-                </div>
+                    src="images/youtube.png"
+                    alt="Youtube"
+                    class="img-fluid social-logo"
+                    width="49"
+                    height="49"
+                /></a>
+              </div>
+              <div class="mx-4 my-4">
+                <a
+                  href="https://github.com/tweiss9/Sort-Spotify-Playlist"
+                  title="GitHub Repository for this project"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="images/github_logo.png"
+                    alt=""
+                    width="50"
+                    height="50"
+                /></a>
               </div>
             </div>
           </div>
-          <!-- Add more project cards here -->
         </div>
+        <div class="card bg-transparent border-1 border-secondary rounded-lg">
+          <h3 class="card-header bg-transparent text-center">
+            Portfolio Website
+          </h3>
+          <div class="card-body d-flex flex-column text-center">
+            <p class="card-text text-left">
+              This project is a personal portfolio website that showcases my
+              technical skills, a collection of my projects as well as my
+              contact information. The website is constructed using HTML for
+              structuring content, CSS for styling, and JavaScript for adding
+              interactivity. The use of Bootstrap, a CSS framework, ensures the
+              website's responsiveness and adaptability to various devices. The
+              website is hosted on a Node.js server and deployed using Firebase.
+              <br />
+              <br />
+              <strong>Technologies Used: </strong> HTML, CSS, JavaScript,
+              Bootstrap, Node.js, Firebase
+            </p>
+            <div
+              class="mt-auto d-flex align-items-center justify-content-center"
+            >
+              <div class="mx-4 my-4">
+                <img
+                  class="cursor-pointer home-link"
+                  src="images/house.png"
+                  alt="Home"
+                  width="52"
+                  height="52"
+                />
+              </div>
+              <div class="mx-4 my-4">
+                <a
+                  href="https://github.com/tweiss9/portfolio"
+                  title="GitHub Repository for this project"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="images/github_logo.png"
+                    alt=""
+                    height="52"
+                    width="52"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Add more project cards here -->
       </div>
     </section>
 
     <!-- Contact Me Section -->
     <section id="contact-me" class="pb-5 mb-5">
-      <div class="container">
-        <h2 class="text-center display-4 pb-3">Contact Me</h2>
-        <p class="text-center">
-          Feel free to complete this form, and I will follow up with you
-          promptly.
-        </p>
-        <div class="row">
-          <div class="col-md-6 mx-auto">
-            <form id="myForm">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                  type="text"
-                  class="form-control transparent-input"
-                  id="name"
-                  placeholder="Enter your name"
-                  required
-                />
-                <div id="nameError" class="invalid-feedback">
-                  Please enter your name.
-                </div>
+      <h2 class="text-center display-4 pb-3">Contact Me</h2>
+      <p class="text-center">
+        Feel free to complete this form, and I will follow up with you promptly.
+      </p>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <form id="myForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control transparent-input"
+                id="name"
+                placeholder="Enter your name"
+                required
+              />
+              <div id="nameError" class="invalid-feedback">
+                Please enter your name.
               </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  class="form-control transparent-input"
-                  id="email"
-                  placeholder="Enter your email"
-                  required
-                />
-                <div id="emailError" class="invalid-feedback">
-                  Please enter a valid email.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
-                  class="form-control transparent-input"
-                  id="message"
-                  rows="3"
-                  placeholder="Enter your message"
-                  required
-                ></textarea>
-                <div id="messageError" class="invalid-feedback">
-                  Please enter your message.
-                </div>
-              </div>
-              <div class="form-group">
-                <div
-                  id="recaptchaDiv"
-                  class="g-recaptcha"
-                  data-callback="onRecaptchaCompleted"
-                  data-sitekey="%= recaptchaSiteKey %"
-                ></div>
-                <div id="recaptchaError" class="invalid-feedback d-none">
-                  Please check the reCAPTCHA box.
-                </div>
-              </div>
-              <div class="form-group">
-                <button
-                  id="submitButton"
-                  type="submit"
-                  class="btn btn-primary btn-block align-items-stretch"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-            <div
-              id="loadingMessage"
-              class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1"
-              role="alert"
-            >
-              <div class="spinner-border text-primary mr-2" role="status"></div>
-              Sending email...
             </div>
-            <div
-              id="successMessage"
-              class="alert alert-success d-none align-items-center justify-content-center flex-grow-1"
-              role="alert"
-            >
-              Message sent!
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control transparent-input"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+              <div id="emailError" class="invalid-feedback">
+                Please enter a valid email.
+              </div>
             </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                class="form-control transparent-input"
+                id="message"
+                rows="3"
+                placeholder="Enter your message"
+                required
+              ></textarea>
+              <div id="messageError" class="invalid-feedback">
+                Please enter your message.
+              </div>
+            </div>
+            <div class="form-group">
+              <div
+                id="recaptchaDiv"
+                class="g-recaptcha"
+                data-callback="onRecaptchaCompleted"
+                data-sitekey="%= recaptchaSiteKey %"
+              ></div>
+              <div id="recaptchaError" class="invalid-feedback d-none">
+                Please check the reCAPTCHA box.
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                id="submitButton"
+                type="submit"
+                class="btn btn-primary btn-block align-items-stretch"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+          <div
+            id="loadingMessage"
+            class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1"
+            role="alert"
+          >
+            <div class="spinner-border text-primary mr-2" role="status"></div>
+            Sending email...
+          </div>
+          <div
+            id="successMessage"
+            class="alert alert-success d-none align-items-center justify-content-center flex-grow-1"
+            role="alert"
+          >
+            Message sent!
           </div>
         </div>
       </div>
@@ -409,10 +394,8 @@
 
     <!-- Footer Section -->
     <footer class="footer pt-5 mt-5">
-      <div class="container">
-        <div class="text-center">
-          <p>&copy; 2023 Tyler Weiss. All rights reserved.</p>
-        </div>
+      <div class="text-center">
+        <p>&copy; 2023 Tyler Weiss. All rights reserved.</p>
       </div>
     </footer>
     <script
@@ -421,10 +404,11 @@
       async
     </script>
     <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    >
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
       async
-    </script>
+    ></script>
     <script src="https://www.google.com/recaptcha/api.js?render=explicit">
       defer
     </script>
