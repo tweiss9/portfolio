@@ -1,5 +1,5 @@
 # Portfolio Website
-This is my portfolio website that showcases my skills and projects. It also allows visitors to send an intrest form via an email to me using a contact form. This project is hosted on <a href="https://firebase.google.com/" target="_blank"> Firebase.
+This is my portfolio website that showcases my skills and projects. It also allows visitors to send an interest form via an email to me using a contact form. This project is hosted on <a href="https://firebase.google.com/" target="_blank"> Firebase.
 
 # Installation
 To install the project, follow these steps:
@@ -7,40 +7,30 @@ To install the project, follow these steps:
   2. Change the directory and go into the functions folder.
      
       ```
-      
       cd <Your_Project_Location>
       cd functions
-      
       ```
-  4. Install the required dependencies.
+  3. Install the required dependencies.
      
       ```
-      
       npm install
-      
       ```
-  6. Create a .env file in the functions folder and set the email and password you want emails to be sent to.
+  4. Create a .env file in the functions folder and set the email and password you want emails to be sent to.
      
       ```
-      
       EMAIL_SENDER=<YOUR_EMAIL>
       EMAIL_SENDER_PASSWORD=<YOUR_EMAIL_PASSWORD>
-      
       ```
-  8. Add the <a href="https://www.google.com/recaptcha/about/" target="_blank">reCAPTCHA </a> site key and secret key to the .env file.
+  5. Add the <a href="https://www.google.com/recaptcha/about/" target="_blank">reCAPTCHA </a> site key and secret key to the .env file.
      
       ```
-      
       RECAPTCHA_SITE_KEY=<YOUR_SITE_KEY>
       RECAPTCHA_SECRET_KEY=<YOUR_SECRET_KEY>
+      ```
+  6. Start the server
       
       ```
-  10. Start the server
-      
-      ```
-      
       npm run start
-      
       ```
 # Usage
 To use the website, follow these steps:
