@@ -342,7 +342,9 @@
             </div>
           </div>
           <div class="row pb-4">
-            <label for="email" class="col-lg-3 col-2 col-form-label">Email</label>
+            <label for="email" class="col-lg-3 col-2 col-form-label"
+              >Email</label
+            >
             <div class="col-xl-12 col-lg-8 col-9">
               <input
                 type="email"
@@ -359,7 +361,9 @@
             </div>
           </div>
           <div class="row pb-4">
-            <label for="message" class="col-lg-3 col-2 col-form-label">Message</label>
+            <label for="message" class="col-lg-3 col-2 col-form-label"
+              >Message</label
+            >
             <div class="col-xl-12 col-lg-8 col-9">
               <textarea
                 class="bg-transparent border-dark border-opacity-50 form-control"
@@ -400,6 +404,21 @@
             </button>
           </div>
         </form>
+        <div
+          id="loadingMessage"
+          class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1"
+          role="alert"
+        >
+          <div class="spinner-border text-primary mr-2" role="status"></div>
+          Sending email...
+        </div>
+        <div
+          id="successMessage"
+          class="alert alert-success d-none align-items-center justify-content-center flex-grow-1"
+          role="alert"
+        >
+          Message sent!
+        </div>
       </div>
     </section>
 
