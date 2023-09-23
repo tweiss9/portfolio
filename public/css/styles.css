@@ -53,6 +53,6 @@ body {
 /* extra-large screens */
 @media (min-width: 1201px) {
   .about-text {
-    font-size: 32px; 
+    font-size: 25px; 
   }
 }
