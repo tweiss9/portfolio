@@ -1,13 +1,7 @@
-let recaptchaResponse = "";
-let recaptchaSuccess = "";
 let recaptchaSiteKey;
-let recaptchaInitialized = false;
+let recaptchaComplete = false;
+let isFormSubmitted = false;
 const prefix = "https://us-central1-tylerhweiss.cloudfunctions.net/api";
-
-window.addEventListener("cspviolation", handleCSPViolation);
-window.addEventListener("beforeunload", () => {
-  sessionStorage.removeItem("recaptchaRendered");
-});
 
 document.addEventListener("DOMContentLoaded", function () {
   const navigationLinks = document.querySelectorAll(".nav-link");
@@ -34,114 +28,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetch(prefix + "/get-site-key")
     .then((response) => {
-      if (!response) {
-        throw new Error("Response is empty");
-      }
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        console.log("Response Status:", response.status);
+        throw new Error("Failed to fetch reCAPTCHA site key");
       }
       return response.json();
     })
     .then((data) => {
-      recaptchaSiteKey = data.recaptchaSiteKey;
-      const recaptchaDiv = document.querySelector(".g-recaptcha");
+      const recaptchaSiteKey = data.recaptchaSiteKey;
+
+      const recaptchaDiv = document.getElementById("recaptchaDiv");
       recaptchaDiv.setAttribute("data-sitekey", recaptchaSiteKey);
-      initializeRecaptcha().catch((error) => {
-        console.error("Error initializing reCAPTCHA:", error);
-      });
-    })
-    .catch((error) => {
-      console.error("Error fetching reCAPTCHA site key:", error);
-    });
-});
 
-function initializeRecaptcha() {
-  return new Promise((resolve, reject) => {
-    if (typeof grecaptcha === "undefined") {
-      loadRecaptchaScript()
-        .then(() => {
-          grecaptcha.ready(() => {
-            try {
-              grecaptcha.render("recaptchaDiv", {
-                sitekey: recaptchaSiteKey,
-                callback: onRecaptchaCompleted,
-                "error-callback": onRecaptchaError,
-              });
-
-              resolve();
-            } catch (error) {
-              reject(error);
-            }
-          });
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    } else {
-      grecaptcha.ready(() => {
-        try {
+      if (window.grecaptcha) {
+        grecaptcha.ready(function () {
+          isRecaptchaReady = true;
           grecaptcha.render("recaptchaDiv", {
             sitekey: recaptchaSiteKey,
-            callback: onRecaptchaCompleted,
+            callback: checkRecaptchaStatus,
             "error-callback": onRecaptchaError,
           });
-
-          resolve();
-        } catch (error) {
-          reject(error);
-        }
-      });
-    }
-  });
-}
-
-function loadRecaptchaScript() {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js";
-    script.async = true;
-    script.defer = true;
-    script.addEventListener("load", resolve);
-    script.addEventListener("error", reject);
-    document.head.appendChild(script);
-  });
-}
-
-function onRecaptchaError(error) {
-  console.error("Error during reCAPTCHA verification.", error);
-  recaptchaSuccess = false;
-}
-
-function onRecaptchaCompleted(response) {
-  recaptchaResponse = response;
-  fetch(prefix + `/verify-recaptcha?recaptchaResponse=${recaptchaResponse}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success) {
-        recaptchaSuccess = true;
-        console.log("reCAPTCHA validation successful!");
-        if (
-          !document
-            .getElementById("recaptchaError")
-            .classList.contains("d-none")
-        ) {
-          document.getElementById("recaptchaError").classList.add("d-none");
-          document.getElementById("recaptchaError").style.display = "block";
-        }
+        });
       } else {
-        recaptchaSuccess = false;
-        console.error("reCAPTCHA validation failed:", data.error);
+        console.error("grecaptcha is not defined.");
       }
-    })
-    .catch((error) => {
-      onRecaptchaError(error);
     });
-}
+});
 
 function scrollToSection(sectionId) {
   const targetSection = document.querySelector(sectionId);
@@ -149,6 +61,43 @@ function scrollToSection(sectionId) {
   const targetPosition =
     targetSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
   window.scrollTo({ top: targetPosition, behavior: "smooth" });
+}
+
+function checkRecaptchaStatus() {
+  if (!isRecaptchaReady) {
+    console.log("reCAPTCHA is not yet ready.");
+    return;
+  }
+  const recaptchaResponse = grecaptcha.getResponse();
+
+  fetch(prefix + "/reCAPTCHA", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ "g-recaptcha-response": recaptchaResponse }),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((verificationResult) => {
+      if (verificationResult.success) {
+        recaptchaComplete = true;
+      } else {
+        recaptchaComplete = false;
+        console.error(
+          "reCAPTCHA verification failed." + verificationResult.error
+        );
+      }
+    })
+    .catch((error) => {
+      recaptchaComplete = false;
+      console.error("Error verifying reCAPTCHA:", error);
+    });
+}
+
+function onRecaptchaError() {
+  console.error("Error during reCAPTCHA verification.", error);
 }
 
 function handleSubmit(event) {
@@ -178,7 +127,7 @@ function handleSubmit(event) {
   isValid =
     toggleValidation(
       document.querySelector(".g-recaptcha"),
-      !recaptchaResponse,
+      !recaptchaComplete,
       "recaptchaError"
     ) && isValid;
 
@@ -213,21 +162,20 @@ function handleSubmit(event) {
   setTimeout(() => {
     document.getElementById("myForm").reset();
     grecaptcha.reset();
-    recaptchaResponse = "";
-    recaptchaSuccess = false;
+    recaptchaComplete = false;
   }, 2000);
 }
 
 function toggleValidation(inputField, condition, errorFieldId) {
   const errorField = document.getElementById(errorFieldId);
-
   if (inputField.classList.contains("g-recaptcha")) {
     const recaptchaErrorElement = document.getElementById("recaptchaError");
-    if (!recaptchaResponse && !recaptchaSuccess) {
+    if (!recaptchaComplete) {
       recaptchaErrorElement.classList.remove("d-none");
       recaptchaErrorElement.style.display = "block";
       return false;
     } else {
+      recaptchaErrorElement.classList.add("d-none");
       return true;
     }
   } else if (condition) {
@@ -257,8 +205,4 @@ function showSuccessMessage() {
   setTimeout(() => {
     successMessage.classList.add("d-none");
   }, 2000);
-}
-
-function handleCSPViolation(event) {
-  console.log("CSP Violation Report:", event);
 }
