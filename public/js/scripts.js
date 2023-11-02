@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const homeLink = document.querySelector(".home-link");
+  const homeLink = document.getElementById("home-link")
   if (homeLink) {
     homeLink.addEventListener("click", (event) => {
       event.preventDefault();

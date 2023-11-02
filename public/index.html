@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
   </head>
-  <body class="container">
+  <body class="container h-100">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top px-5">
       <a class="navbar-brand nav-link text-white" href="#welcome"
@@ -56,14 +56,9 @@
     </nav>
 
     <!--Welcome Section-->
-    <section id="welcome" class="text-center mx-5 mt-5 py-5">
-      <h1 id="welcome-big-text" class="display-2 mb-3 py-5">
-        Hello, I'm Tyler Weiss!
-      </h1>
-      <h2>
-        I am a Computer Scientist currently looking for employment
-        opportunities.
-      </h2>
+    <section id="welcome" class="text-center mt-5 pt-5 vh-100">
+      <h1 class="display-3 my-md-4 py-5">Hello, I'm Tyler Weiss!</h1>
+      <h2>I'm a Computer Scientist seeking side projects.</h2>
       <ul
         class="list-inline my-5 d-flex justify-content-center align-items-center user-select-none"
       >
@@ -73,7 +68,7 @@
               src="images/github.png"
               title="View my GitHub page"
               alt="GitHub"
-              class="img"
+              class="img-fluid"
               width="60"
               height="60"
             />
@@ -81,7 +76,7 @@
         </li>
         <li class="list-inline-item me-sm-5 me-3">
           <a
-            href="https://www.linkedin.com/in/tyler-weiss-aa6b34193/"
+            href="https://www.linkedin.com/in/tylerhweiss"
             target="_blank"
             rel="noopener"
           >
@@ -89,7 +84,7 @@
               src="/images/linkedIn.png"
               title="View my LinkedIn page"
               alt="LinkedIn"
-              class="img"
+              class="img-fluid"
               width="60"
               height="60"
             />
@@ -105,7 +100,7 @@
               src="/images/gmail.png"
               title="Send me an email"
               alt="Gmail"
-              class="img"
+              class="img-fluid"
               width="80"
               height="60"
             />
@@ -117,7 +112,7 @@
               src="/images/resume.png"
               title="Download my resume"
               alt="Resume"
-              class="img"
+              class="img-fluid"
               width="60"
               height="60"
             />
@@ -129,7 +124,7 @@
     <!-- About Me Section -->
     <section id="about-me" class="pb-5 mb-5">
       <h2 class="text-center display-4 mb-4">About Me</h2>
-      <p class="about-text mx-5 px-5">
+      <p class="about-text mx-2 px-1">
         Welcome to my portfolio website! I am a dedicated Computer Science
         graduate from Temple University. I am equipped with a strong foundation
         in both frontend and backend development as well as expertise in network
@@ -145,7 +140,7 @@
     <!-- Skills Section -->
     <section id="skills" class="pb-5 mb-5">
       <h2 class="text-center display-4 mb-4">Skills</h2>
-      <div class="justify-content-center row g-4">
+      <div class="justify-content-center row g-4 px-3">
         <div class="col-md-4">
           <div
             class="card bg-transparent border-1 border-secondary rounded-lg h-100"
@@ -205,7 +200,7 @@
     <!-- Projects Section -->
     <section id="projects" class="pb-5 mb-5">
       <h2 class="text-center display-4 mb-4">Projects</h2>
-      <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="row row-cols-1 row-cols-md-2 g-4 px-3">
         <div class="col">
           <div
             class="card bg-transparent border-1 border-secondary rounded-lg h-100"
@@ -238,7 +233,8 @@
                     <img
                       src="images/youtube.png"
                       title="Watch the YouTube video for this project"
-                      class="img-fluid social-logo"
+                      alt="YouTube Video"
+                      class="img-fluid"
                       width="49"
                       height="49"
                     />
@@ -253,6 +249,8 @@
                     <img
                       src="images/github.png"
                       title="GitHub repository for this project"
+                      alt="GitHub Repository"
+                      class="img-fluid"
                       width="50"
                       height="50"
                     />
@@ -287,9 +285,12 @@
               >
                 <div class="m-4 user-select-none">
                   <img
-                    class="cursor-pointer home-link"
+                    id="home-link"
                     src="images/house.png"
-                    title="Home for this project"
+                    title="Home for this website"
+                    alt="Home"
+                    class="img-fluid"
+                    role="button"
                     width="52"
                     height="52"
                   />
@@ -303,6 +304,8 @@
                     <img
                       src="images/github.png"
                       title="GitHub repository for this project"
+                      alt="GitHub Repository"
+                      class="img-fluid"
                       height="52"
                       width="52"
                     />
@@ -322,11 +325,13 @@
       <p class="text-center">
         Feel free to complete this form, and I will follow up with you promptly.
       </p>
-      <div class="col-xl-4 col-lg-7 col-md-8 col-sm-10 col-12 mt-4 mx-auto">
+      <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 col-sm-9 col-10 mt-4 mx-auto">
         <form id="myForm">
-          <div class="row pb-4 align-items-center">
-            <label for="name" class="col-lg-3 col-2 col-form-label">Name</label>
-            <div class="col-xl-12 col-lg-8 col-9">
+
+          <!-- Name -->
+          <div class="row pb-4">
+            <label for="name" class="col-3 col-sm-2 col-form-label">Name</label>
+            <div class="col-9 col-sm-10">
               <input
                 type="text"
                 class="bg-transparent border-dark border-opacity-50 form-control"
@@ -342,11 +347,13 @@
               </div>
             </div>
           </div>
+
+          <!-- Email -->
           <div class="row pb-4">
-            <label for="email" class="col-lg-3 col-2 col-form-label"
+            <label for="email" class="col-3 col-sm-2 col-form-label"
               >Email</label
             >
-            <div class="col-xl-12 col-lg-8 col-9">
+            <div class="col-9 col-sm-10">
               <input
                 type="email"
                 class="bg-transparent border-dark border-opacity-50 form-control"
@@ -362,11 +369,13 @@
               </div>
             </div>
           </div>
+          
+          <!-- Message -->
           <div class="row pb-4">
-            <label for="message" class="col-lg-3 col-2 col-form-label"
+            <label for="message" class="col-3 col-sm-2 col-form-label"
               >Message</label
             >
-            <div class="col-xl-12 col-lg-8 col-9">
+            <div class="col-9 col-sm-10">
               <textarea
                 class="bg-transparent border-dark border-opacity-50 form-control"
                 id="message"
@@ -381,6 +390,8 @@
               </div>
             </div>
           </div>
+
+          <!-- ReCAPTCHA -->
           <div
             id="recaptchaDiv"
             class="g-recaptcha d-flex justify-content-center"
@@ -392,6 +403,8 @@
           >
             Please check the reCAPTCHA box.
           </div>
+
+          <!-- Submit -->
           <div class="d-grid py-3">
             <button
               id="submitButton"
@@ -403,6 +416,8 @@
             </button>
           </div>
         </form>
+
+        <!-- Loading Messages -->
         <div
           id="loadingMessage"
           class="alert alert-primary d-none align-items-center justify-content-center flex-grow-1"
@@ -422,7 +437,7 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="footer pt-5">
+    <footer class="footer pt-2">
       <p class="fs-6 text-center">
         &copy; 2023 Tyler Weiss. All rights reserved.
       </p>

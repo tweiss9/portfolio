@@ -2,11 +2,6 @@ body {
   font-family: "Roboto", sans-serif;
   background-image: url("/images/background.png");
   background-repeat: repeat;
-  height: 100vh;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 
 #successMessage {
@@ -28,31 +23,28 @@ body {
 #loadingMessage.show {
   display: flex;
 }
+/* extra-small screens */
+.about-text {
+  font-size: 14px;
+}
 
 /* small screens */
-@media (max-width: 576px) {
+@media (min-width: 577px) and (max-width: 992px) {
   .about-text {
-    font-size: 16px; 
+    font-size: 16px;
   }
 }
 
-/* medium screen */
-@media (min-width: 577px) and (max-width: 992px) {
+/* medium screens */
+@media (min-width: 993px) and (max-width: 1200px) {
   .about-text {
     font-size: 18px;
   }
 }
 
 /* large screens */
-@media (min-width: 993px) and (max-width: 1200px) {
-  .about-text {
-    font-size: 20px;
-  }
-}
-
-/* extra-large screens */
 @media (min-width: 1201px) {
   .about-text {
-    font-size: 25px; 
+    font-size: 20px;
   }
 }
