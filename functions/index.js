@@ -18,9 +18,9 @@ app.use(
     origin: [
       "https://tylerhweiss.web.app",
       "https://tylerhweiss.com",
+      "https://www.tylerhweiss.com",
       "http://localhost:5000",
       "http://127.0.0.1:5000",
-      "199.36.158.100"
     ],
   })
 );
