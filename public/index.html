@@ -58,7 +58,7 @@
     <!--Welcome Section-->
     <section id="welcome" class="text-center mt-5 pt-5 vh-100">
       <h1 class="display-3 my-md-4 py-5">Hello, I'm Tyler Weiss!</h1>
-      <h2>I'm a Computer Scientist seeking side projects.</h2>
+      <h2>I'm a Computer Scientist based in Philadelphia, PA.</h2>
       <ul
         class="list-inline my-5 d-flex justify-content-center align-items-center user-select-none"
       >
@@ -163,13 +163,8 @@
             <ul class="card-body list-unstyled text-center">
               <li>Python</li>
               <li>Dart</li>
-              <li>Java</li>
-              <li>C</li>
-              <li>C++</li>
               <li>Node.js</li>
-              <li>Express.js</li>
               <li>APIs</li>
-              <li>SQL</li>
               <li>Flask</li>
               <li>Firebase</li>
             </ul>
@@ -183,14 +178,8 @@
             <ul class="card-body list-unstyled text-center">
               <li>Git</li>
               <li>GitHub</li>
-              <li>Bash</li>
-              <li>Jest</li>
-              <li>Scrum</li>
               <li>IT Service</li>
-              <li>Android Studio</li>
               <li>Visual Studio Code</li>
-              <li>Agile Development</li>
-              <li>Network Security</li>
             </ul>
           </div>
         </div>
@@ -200,7 +189,7 @@
     <!-- Projects Section -->
     <section id="projects" class="pb-5 mb-5">
       <h2 class="text-center display-4 mb-4">Projects</h2>
-      <div class="row row-cols-1 row-cols-md-2 g-4 px-3">
+      <div class="row row-cols-1 g-4 px-3">
         <div class="col">
           <div
             class="card bg-transparent border-1 border-secondary rounded-lg h-100"
@@ -264,6 +253,49 @@
           <div
             class="card bg-transparent border-1 border-secondary rounded-lg h-100"
           >
+            <h3 class="card-header text-center">Gym Application</h3>
+            <div class="card-body d-flex flex-column">
+              <p class="card-text">
+                This cross-platform Flutter application is designed to create,
+                manage, and track users' custom workout routines. The
+                application allows users to create personalized workouts by
+                specifying the workout name, adding exercises, and setting the
+                number of sets and repetitions for each exercise. After each
+                completed workout, the application saves the workout data so
+                that users can review them later. All users are authenticated
+                through Firebase, and their workout details are saved in a
+                Firebase database.
+                <br />
+                <br />
+                <strong>Technologies Used: </strong> Flutter, Dart, Firebase
+              </p>
+              <div
+                class="mt-auto d-flex align-items-center justify-content-center"
+              >
+                <div class="m-4 user-select-none">
+                  <a
+                    href="https://github.com/tweiss9/Gym"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img
+                      src="images/github.png"
+                      title="GitHub repository for this project"
+                      alt="GitHub Repository"
+                      class="img-fluid"
+                      height="52"
+                      width="52"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div
+            class="card bg-transparent border-1 border-secondary rounded-lg h-100"
+          >
             <h3 class="card-header text-center">Portfolio Website</h3>
             <div class="card-body d-flex flex-column">
               <p class="card-text">
@@ -297,7 +329,7 @@
                 </div>
                 <div class="m-4 user-select-none">
                   <a
-                    href="https://github.com/tweiss9/portfolio"
+                    href="https://github.com/tweiss9/Portfolio"
                     target="_blank"
                     rel="noopener"
                   >
@@ -318,20 +350,22 @@
         <!-- Add more project cards here -->
       </div>
     </section>
-
     <!-- Contact Me Section -->
     <section id="contact-me" class="pb-5 mb-5">
       <h2 class="text-center display-4 pb-3">Contact Me</h2>
       <p class="text-center">
         Feel free to complete this form, and I will follow up with you promptly.
       </p>
-      <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 col-sm-9 col-10 mt-4 mx-auto">
+      <div
+        class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 col-sm-9 col-10 mt-4 mx-auto"
+      >
         <form id="myForm">
-
           <!-- Name -->
           <div class="row pb-4">
-            <label for="name" class="col-3 col-sm-2 col-form-label">Name</label>
-            <div class="col-9 col-sm-10">
+            <label for="name" class="col-md-2 col-sm-3 col-4 col-form-label"
+              >Name</label
+            >
+            <div class="col-md-10 col-sm-9 col-8">
               <input
                 type="text"
                 class="bg-transparent border-dark border-opacity-50 form-control"
@@ -350,10 +384,10 @@
 
           <!-- Email -->
           <div class="row pb-4">
-            <label for="email" class="col-3 col-sm-2 col-form-label"
+            <label for="email" class="col-md-2 col-sm-3 col-4 col-form-label"
               >Email</label
             >
-            <div class="col-9 col-sm-10">
+            <div class="col-md-10 col-sm-9 col-8">
               <input
                 type="email"
                 class="bg-transparent border-dark border-opacity-50 form-control"
@@ -369,13 +403,13 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Message -->
           <div class="row pb-4">
-            <label for="message" class="col-3 col-sm-2 col-form-label"
+            <label for="message" class="col-md-2 col-sm-3 col-4 col-form-label"
               >Message</label
             >
-            <div class="col-9 col-sm-10">
+            <div class="col-md-10 col-sm-9 col-8">
               <textarea
                 class="bg-transparent border-dark border-opacity-50 form-control"
                 id="message"
